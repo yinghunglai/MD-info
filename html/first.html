@@ -1,0 +1,38 @@
+<div id="outer1">
+  <div class="outer">
+    <div id="page1" >
+      <div class="pageHead">
+        Voluntary Participation
+      </div>
+      <br>
+      <div>
+        Participation in this study is voluntary. If you do not wish to participate, there will be no penalty of any kind.<br>
+        <br>
+        To confirm your intent to enroll in this study, please complete the form below.
+        <form name="myForm">
+          <div class="formInput formLeft">
+            First name <br><input type="text" placeholder="John" name="FirstName" ng-model="FirstName" required><br>
+          </div>
+          <div class="formInput formRight">
+            Last name <br><input type="text" placeholder="Doe" name="LastName" ng-model="LastName" required><br>
+          </div>
+          <div class="formInput formClear" >
+            What city were you born in <br><input type="text" placeholder="City Name" name="City" ng-model="City" required><br>
+          </div>
+          <div id="formConsent">
+            <input type="radio" id="radio6" class="css-checkbox" name="Consent" ng-model="Consent" value="checked"  required/><label for="radio6" class="css-label radGroup2">I consent to participate in the study</lable>
+          </div>
+          <div class="formLeft" id="box">
+            &#60
+          </div>
+        <div class="formInput formRight formchange" ng-if="!myForm.$valid">
+          Complete the for to continue enrollment
+        </div>
+        <div class="formInput formRight formchange" id="formClick" ng-click="load()" ng-if="myForm.$valid">
+          I understand and wish to continue with enrollment
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>    
+</div>

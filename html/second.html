@@ -1,0 +1,76 @@
+<div id="outer2">
+  <div class="outer">
+      <div id="page2" ng-style="myStyle">
+        <div class="pageHead">
+        Search for a physician or organization</div>
+        <br>
+        <input type="text" name="City" ng-model="Search" placeholder="Search for a doctor, physician, or organization by name" ng-change="change()"/><br>
+        <div>
+          <div id="bot" ng-style="myGreyStyle">
+            <label ng-repeat="item in FinalOutput" for="{{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}||{{item['info'][0]['organization_name']}}">
+              <div class="searchOutput">
+              <input type="radio" class="searchOutput2" ng-model="Selected" ng-change="render(item['info'][0]['first_name']+' '+item['info'][0]['last_name']||item['info'][0]['organization_name'])"
+                ng-value="item['info'][0]['first_name']+' '+item['info'][0]['last_name']||item['info'][0]['organization_name']"
+                id="{{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}||{{item['info'][0]['organization_name']}}">
+                  {{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}{{item['info'][0]['organization_name']}}<br>
+                  <span ng-if="item.count>1 && item.locations>1" >
+                    We found {{item.count}} {{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}{{item['info'][0]['organization_name']}}'s nearby practing at {{item.locations}} locations<br>
+                  </span>
+                  <span ng-if="item.count>1 && item.locations===1">
+                    We found {{item.count}} {{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}{{item['info'][0]['organization_name']}}'s nearby<br>
+                  </span>
+                  <span ng-if="item.count===1 && item.locations>1">
+                    We found {{item.count}} {{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}{{item['info'][0]['organization_name']}} nearby practing at {{item.locations}} locations<br>
+                  </span>
+                  <span ng-if="item.count===1 && item.locations===1">
+                    We found {{item.count}} {{item['info'][0]['first_name']+' '+item['info'][0]['last_name']}}{{item['info'][0]['organization_name']}} nearby
+                  </span>
+              </div>    
+            </label>
+          </div>
+          <div class="Space" ng-if="FinalOutput.length<5">
+          </div>
+          <div class="Space" ng-if="FinalOutput.length<4">
+          </div>
+          <div class="Space" ng-if="FinalOutput.length<3">
+          </div>
+          <div class="Space" ng-if="FinalOutput.length<2">
+          </div>
+          <div id="top" ng-if="upload">
+            Loading providers...
+          </div>
+          <div id="boxes" ng-if="tmpOutput.length>5">
+            <div class="arrow" ng-if="tmpOutput.length>5 && page>1" ng-click="move('<')">
+              <
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[1]" ng-if="tmpOutput.length>5" ng-click="move('1')">
+              1
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[2]" ng-if="tmpOutput.length>5" ng-click="move('2')">
+              2
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[3]" ng-if="tmpOutput.length>10" ng-click="move('3')">
+              3
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[4]" ng-if="tmpOutput.length>15" ng-click="move('4')">
+              4
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[5]" ng-if="tmpOutput.length>20" ng-click="move('5')">
+              5
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[6]" ng-if="tmpOutput.length>25" ng-click="move('5')">
+              6
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[7]" ng-if="tmpOutput.length>30" ng-click="move('7')">
+              7
+            </div>
+            <div class="smallBox" ng-style="myPagesStyle[8]" ng-if="tmpOutput.length>35" ng-click="move('8')">
+              8
+            </div>
+            <div class="arrow" ng-if="tmpOutput.length>5 && (page*5<tmpOutput.length)" ng-click="move('>')">
+              >
+          </div>
+        </div>    
+      </div>
+  </div>
+</div>
